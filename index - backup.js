@@ -36,11 +36,6 @@ client.on('ready', () => {
 client.on('message', async (message) => {
     const isGroups = message.from.endsWith('@g.us') ? true : false;
     if ((isGroups && config.groups) || !isGroups) {
-        if (message.type == 'chat') {
-            if (message.content == "status"){
-                client.sendMessage(message.from, "Bot in Active");
-            }
-        }
         if (message.type == "image") {
             client.sendMessage(message.from, "Wait..");
             try {
@@ -60,7 +55,7 @@ client.on('message', async (message) => {
             try {
                 const media = await message.downloadMedia();
                 client.sendMessage(message.from, media).then(() => {
-                    client.sendMessage(message.from, "Done!");
+                    client.sendMessage(message.from, "*Done!");
                 });  
             } catch {
                 client.sendMessage(message.from, "Failed!");
